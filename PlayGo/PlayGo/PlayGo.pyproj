@@ -23,10 +23,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GamePlay\control.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GamePlay\GameModules\box.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GamePlay\GameModules\frame.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GamePlay\GameModules\fx.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GamePlay\GameModules\loadobj.py">

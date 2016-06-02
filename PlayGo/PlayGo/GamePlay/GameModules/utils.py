@@ -1,7 +1,9 @@
 # -*- coding:utf-8 -*-
+
 import pyglet
 
-def centerImage(image):
-    #ÖĞÖÃÍ¼ÏñÖáĞÄ
-    image.anchor_x = image.width//2
-    image.anchor_y = image.height//2
+def centerImage(*image):
+    #ä¸­ç½®å›¾ç‰‡åæ ‡è½´
+    for i in range(len(image)):
+        image[i].anchor_x = image[i].width//2
+        image[i].anchor_y = image[i].height//2

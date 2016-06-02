@@ -12,9 +12,24 @@ pyglet.resource.reindex()
 bg = pyglet.resource.image("Background.jpg")
 utils.centerImage(bg)
 
-frame = pyglet.resource.image("Frame.png")
-utils.centerImage(frame)
+wall = pyglet.resource.image("Frame.png")
+utils.centerImage(wall)
+
+#计分板
+scoreboard = pyglet.resource.image("Scoreboard.png")
+utils.centerImage(scoreboard)
 
 #方块
-box = pyglet.resource.image("Box.png")
-utils.centerImage(box)
+box1 = pyglet.resource.image("Box1.png")
+box2 = pyglet.resource.image("Box2.png")
+box3 = pyglet.resource.image("Box3.png")
+box4 = pyglet.resource.image("Box4.png")
+boxTuple = (box1,box2,box3,box4)
+utils.centerImage(*boxTuple)
+
+#特效爆炸
+boom = pyglet.resource.image("Explosion.png")
+utils.centerImage(boom)
+
+#鼠标样式
+mouse = pyglet.resource.image("Mouse.png")
