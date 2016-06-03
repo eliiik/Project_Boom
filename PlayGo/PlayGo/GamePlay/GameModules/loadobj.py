@@ -12,5 +12,6 @@ def boxes(batch = None):
             randint = random.randint(0,3)
             newBox = box.Box(resource.boxTuple[randint], x = box_Xrange[i], y = box_Yrange[j], batch = batch)
             boxes.append(newBox)
+            
     return boxes
 

@@ -7,6 +7,7 @@ import utils
 #资源路径
 pyglet.resource.path = ["GameResource"]
 pyglet.resource.reindex()
+pyglet.image.
 
 #背景
 bg = pyglet.resource.image("Background.jpg")
@@ -32,4 +33,9 @@ boom = pyglet.resource.image("Explosion.png")
 utils.centerImage(boom)
 
 #鼠标样式
-mouse = pyglet.resource.image("Mouse.png")
+mouseCurser = pyglet.resource.image("Mouse.png")
+
+#图标样式
+icon1 = pyglet.resource.image('16.png')
+icon2 = pyglet.resource.image('32.png')
+pyglet.image.load(

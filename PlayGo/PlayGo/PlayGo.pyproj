@@ -57,6 +57,17 @@
     <Folder Include="GamePlay\" />
     <Folder Include="GameResource\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameResource\Background.jpg" />
+    <Content Include="GameResource\Box1.png" />
+    <Content Include="GameResource\Box2.png" />
+    <Content Include="GameResource\Box3.png" />
+    <Content Include="GameResource\Box4.png" />
+    <Content Include="GameResource\Explosion.png" />
+    <Content Include="GameResource\Frame.png" />
+    <Content Include="GameResource\Mouse.png" />
+    <Content Include="GameResource\Scoreboard.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>

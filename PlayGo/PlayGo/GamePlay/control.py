@@ -1,8 +1,8 @@
 ﻿# -*- coding:utf-8 -*-
 
 import pyglet
-from GameModules.resource import mouse
-
+from pyglet.window import mouse
+from GameModules.resource import mouseCurser
 
 def on_mouse_press(x, y, button, modifiers):
     pass
@@ -11,7 +11,8 @@ def on_mouse_release(x, y, button, modifiers):
     pass
 
 def on_mouse_drag(x, y, dx, dy, buttons, modifiers):
-    pass
+    if buttons & mouse.LEFT:
+        return True
 
 #使用自定义鼠标样式
-cursor = pyglet.window.ImageMouseCursor(mouse, 16, 8)
+cursor = pyglet.window.ImageMouseCursor(mouseCurser, 16, 8)
