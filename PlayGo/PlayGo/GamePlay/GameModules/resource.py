@@ -1,13 +1,11 @@
 # -*- coding:utf-8 -*-
 import pyglet
 import utils
-
-
+import gamebox
 
 #资源路径
 pyglet.resource.path = ["GameResource"]
 pyglet.resource.reindex()
-pyglet.image.
 
 #背景
 bg = pyglet.resource.image("Background.jpg")
@@ -25,17 +23,22 @@ box1 = pyglet.resource.image("Box1.png")
 box2 = pyglet.resource.image("Box2.png")
 box3 = pyglet.resource.image("Box3.png")
 box4 = pyglet.resource.image("Box4.png")
-boxTuple = (box1,box2,box3,box4)
-utils.centerImage(*boxTuple)
+boxList = [box1,box2,box3,box4]
+for i in range(len(boxList)):
+    boxList[i].width = boxList[i].height = gamebox.Box.BOXSIZE
+utils.centerImage(*boxList)
 
 #特效爆炸
 boom = pyglet.resource.image("Explosion.png")
 utils.centerImage(boom)
 
 #鼠标样式
-mouseCurser = pyglet.resource.image("Mouse.png")
+#mouseCurser = pyglet.resource.image("Mouse.png")
+#cursor = pyglet.window.ImageMouseCursor(mouseCurser, 16, 8)
 
 #图标样式
-icon1 = pyglet.resource.image('16.png')
-icon2 = pyglet.resource.image('32.png')
-pyglet.image.load(
+iconfile1 = open("GameResource\\16.png", 'rb')
+iconfile2 = open("GameResource\\32.png", 'rb')
+
+icon1 = pyglet.image.load("icon1", file = iconfile1)
+icon2 = pyglet.image.load("icon2", file = iconfile2)

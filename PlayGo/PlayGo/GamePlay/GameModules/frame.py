@@ -3,8 +3,6 @@
 import pyglet
 
 
-
-
 class Scoreboard(pyglet.text.Label):
     def __init__(self, text, textX, textY, batch = None, *args, **kwargs):
         super(Scoreboard, self).__init__(text, x=textX, y=textY,  batch = batch, anchor_x='center',

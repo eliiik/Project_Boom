@@ -26,13 +26,16 @@
     <Compile Include="GamePlay\control.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GamePlay\GameModules\box.py">
+    <Compile Include="GamePlay\GameModules\gamebox.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GamePlay\GameModules\frame.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GamePlay\GameModules\fx.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GamePlay\GameModules\gamemap.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GamePlay\GameModules\loadobj.py">

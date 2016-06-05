@@ -1,24 +1,32 @@
 # -*- coding:utf-8 -*-
 
 import pyglet
-import resource, fx
-from .. import control
+import fx
+from pyglet.window import mouse
 
 class Box(pyglet.sprite.Sprite):
+    BOXSIZE = 30
+    BOXAMOUNT = 10
+
     def __init__(self, initbox, *args, **kwargs):
         super(Box, self).__init__(initbox, *args, **kwargs)
-        counter = 1
-        self.mouseHandler = control.on_mouse_drag()
+        
+        #super(Box, self).height = self.BOXSIZE
+        #super(Box, self).width = self.BOXSIZE
+        self.counterX = 1
+        self.counterY = 1
+        #self.mouseHandler = control.on_mouse_drag()
+
+    def move(x):
+        pass
 
     def update(self, dt):
         #super(Box, self).update(dt)
         pass
 
-    def checkNeighbor(self):
-        cross = [(x,0) for x in [-1,1]]+[(0,y) for y in [-1,1]]
-
     def delete(self):
-        return super(Box, self).delete()
+        if self:
+            return super(Box, self).delete()
 
     def boom(self):
 
@@ -32,5 +40,6 @@ class Box(pyglet.sprite.Sprite):
     #    self.bin = pyglet.image.atlas.TextureBin()
     #    self.animation.add_to_texture_bin(self.bin)
     #    self.sprite = pyglet.sprite.Sprite(self.animation)
+
 
     
