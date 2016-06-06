@@ -4,7 +4,7 @@ import pyglet
 from pyglet.window import mouse
 from GameModules.gamebox import Box
 from GameModules.gamemap import *
-from GameModules.loadobj import swap, boxes, checkNeighbor
+from GameModules.loadobj import swap, boxes
 import math
 
 initCoord = [-1,-1]
@@ -44,7 +44,8 @@ def mouseDrag(*args):
 
     dragBox(boxID,dragCoord)
 
-    threeMoreDeath()
+    boxes.threeMoreDeath(2)
+    boxes.initBoxCounter()
 
 def getBoxID(args):
     m = (args[1] - MARGINLOW - BORDER + 0.5 * Box.BOXSIZE + PADDING) / (Box.BOXSIZE + PADDING)
@@ -68,19 +69,7 @@ def dragBox(boxID, dragCoord):
     except(IndexError):
         pass
 
-def threeMoreDeath():
-    for i in BOXIDARRAY:
-            checkNeighbor(i)
-    try:
-        for i in BOXIDARRAY:
-                if boxes[i] == None:
-                    pass
-                elif boxes[i].counterX > 3:
-                    boxes[i].delete()
-                elif boxes[i].counterY > 3:
-                    boxes[i].delete()
-    except(AttributeError):
-        pass
+
 
     #for i in boxes:
     #    for j in i:

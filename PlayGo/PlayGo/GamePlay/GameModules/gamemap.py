@@ -25,3 +25,5 @@ BOXIDARRAY = list((i,j) for i in range(10) for j in range(10))
 REMOVEPOINTS = [(0,0), (0,1), (1,0), (0,8), (0,9), (5,8), (5,9)]
 for i in REMOVEPOINTS:
     BOXIDARRAY.remove(i)
+
+BOXIDITERATOR = iter(BOXIDARRAY)

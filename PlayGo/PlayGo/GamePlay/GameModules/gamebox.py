@@ -15,6 +15,7 @@ class Box(pyglet.sprite.Sprite):
         #super(Box, self).width = self.BOXSIZE
         self.counterX = 1
         self.counterY = 1
+        self.boxID = (-1,-1)
         #self.mouseHandler = control.on_mouse_drag()
 
     def move(x):
