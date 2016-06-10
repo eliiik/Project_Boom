@@ -13,13 +13,13 @@ score = 0
 leftTimes = 120
 
 mainBatch = pyglet.graphics.Batch()
-frameBatch = pyglet.graphics.Batch()
+#frameBatch = pyglet.graphics.Batch()
 
 boardBatch = pyglet.graphics.Batch()
 wordBatch = pyglet.graphics.Batch()
 
-wall = frame.Frame(resource.wall,400,300,batch = frameBatch)
-bg = frame.Frame(resource.bg, 400,300,batch = mainBatch)
+#wall = frame.Frame(resource.wall,400,300,batch = frameBatch)
+bg = frame.Frame(resource.bg,310, 300, batch = mainBatch, x = 310, y = 300)
 score = frame.Scoreboard("Score: ", 100, 550, wordBatch)
 scoreBoard = frame.Frame(resource.scoreboard, 100, 550, boardBatch)
 #gameWindow.set_mouse_cursor(resource.cursor)
@@ -56,7 +56,7 @@ def on_draw():
     gameWindow.clear()
 
     mainBatch.draw()
-    frameBatch.draw()
+#    frameBatch.draw()
     loadobj.boxBatch.draw()
     boardBatch.draw()
     wordBatch.draw()

@@ -4,7 +4,7 @@ import pyglet
 from pyglet.window import mouse
 from GameModules.gamebox import Box
 from GameModules.gamemap import *
-from GameModules.loadobj import swap, boxes
+from GameModules.loadobj import boxes
 import math
 
 initCoord = [-1,-1]
@@ -43,13 +43,15 @@ def mouseDrag(*args):
     print boxID
 
     dragBox(boxID,dragCoord)
-
-    boxes.threeMoreDeath(2)
+    
+    boxes.threeMoreDeath(4,0)
+    boxes.moveAllDown()
     boxes.initBoxCounter()
+    print boxes.boxArray
 
 def getBoxID(args):
-    m = (args[1] - MARGINLOW - BORDER + 0.5 * Box.BOXSIZE + PADDING) / (Box.BOXSIZE + PADDING)
-    n = (args[0] - MARGINLEFT - BORDER + 0.5 * Box.BOXSIZE + PADDING) / (Box.BOXSIZE + PADDING)
+    m = (args[1] - MARGINLOW - BORDER + 0.5 * Box.BOXSIZE + Box.PADDING) / (Box.BOXSIZE + Box.PADDING)
+    n = (args[0] - MARGINLEFT - BORDER + 0.5 * Box.BOXSIZE + Box.PADDING) / (Box.BOXSIZE + Box.PADDING)
     
     return (int(round(m))-1,int(round(n))-1)
 
@@ -59,13 +61,13 @@ def dragBox(boxID, dragCoord):
             if dragCoord == -1:
                 pass
             elif dragCoord == 1:
-                swap(boxID, (boxID[0], boxID[1] + 1))
+                boxes.swap(boxID, (boxID[0], boxID[1] + 1))
             elif dragCoord == 2:
-                swap(boxID, (boxID[0] + 1, boxID[1]))
+                boxes.swap(boxID, (boxID[0] + 1, boxID[1]))
             elif dragCoord == 3:
-                swap(boxID, (boxID[0], boxID[1] - 1))
+                boxes.swap(boxID, (boxID[0], boxID[1] - 1))
             elif dragCoord == 4:
-                swap(boxID, (boxID[0] - 1, boxID[1]))
+                boxes.swap(boxID, (boxID[0] - 1, boxID[1]))
     except(IndexError):
         pass
 

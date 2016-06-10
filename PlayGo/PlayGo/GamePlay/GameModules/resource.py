@@ -8,7 +8,8 @@ pyglet.resource.path = ["GameResource"]
 pyglet.resource.reindex()
 
 #背景
-bg = pyglet.resource.image("Background.jpg")
+bg = pyglet.resource.image("Background.png")
+bg.height = bg.width = 540
 utils.centerImage(bg)
 
 wall = pyglet.resource.image("Frame.png")
