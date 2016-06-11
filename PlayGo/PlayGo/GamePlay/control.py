@@ -5,6 +5,7 @@ from pyglet.window import mouse
 from GameModules.gamebox import Box
 from GameModules.gamemap import *
 from GameModules.loadobj import boxes
+from GameModules.frame import *
 import math
 
 initCoord = [-1,-1]
@@ -18,6 +19,7 @@ def mouseCoord(*args):
 
 #获取鼠标拖动方向
 def mouseDrag(*args):
+    global LEFTSTEPS1, LEFTSTEPS2
     dx = args[1] - args[0]
     dy = args[3] - args[2]
 
@@ -40,14 +42,24 @@ def mouseDrag(*args):
     else:
         dragCoord = 3
     boxID = getBoxID(initCoord)
-    print boxID
 
     dragBox(boxID,dragCoord)
-    
-    boxes.threeMoreDeath(4,0)
-    boxes.moveAllDown()
-    boxes.initBoxCounter()
-    print boxes.boxArray
+    while 1:
+        boxes.getKilled = 0
+        boxes.moveAllDown()
+        for i in xrange(9):
+        #    print "getkilledinloop: ", boxes.getKilled
+            boxes.threeMoreDeath(i,0)
+            boxes.threeMoreDeathY(0,i)
+        boxes.moveAllDown()
+        boxes.initBoxCounter()
+       # boxes.getKilled -= 1
+       # print "getkilled: ", boxes.getKilled
+        if boxes.getKilled != 1:
+            LEFTSTEPS1 = LEFTSTEPS1
+            setStepNumber(LEFTSTEPS1)
+
+            break
 
 def getBoxID(args):
     m = (args[1] - MARGINLOW - BORDER + 0.5 * Box.BOXSIZE + Box.PADDING) / (Box.BOXSIZE + Box.PADDING)
@@ -70,10 +82,3 @@ def dragBox(boxID, dragCoord):
                 boxes.swap(boxID, (boxID[0] - 1, boxID[1]))
     except(IndexError):
         pass
-
-
-
-    #for i in boxes:
-    #    for j in i:
-    #        if j.
-    

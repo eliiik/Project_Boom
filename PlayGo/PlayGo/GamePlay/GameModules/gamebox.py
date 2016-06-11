@@ -19,6 +19,7 @@ class Box(pyglet.sprite.Sprite):
         self.counterX = 1
         self.counterY = 1
         self.boxID = [boxID[0], boxID[1]]
+        self.visible = False
         #self.mouseHandler = control.on_mouse_drag()
     def getBoxCoord(self, x, y):
         return ((x-0.5)*self.BOXSIZE + BORDER + (x-1) * self.PADDING + MARGINLEFT,
@@ -37,9 +38,16 @@ class Box(pyglet.sprite.Sprite):
         self.y = newCoord[1]
         pass
 
+    #def smaller(self, dt):
+    #    self.scale -= (dt)
+    #    if self.scale < 0:
+    #        pyglet.clock.unschedule(self.smaller)
     def deleteBox(self):
-        print 'delete 2'
+        #print 'delete 2'
+        #pyglet.clock.schedule_interval(self.smaller, 1/120.0)       
+        #pyglet.clock.schedule_once(self.smaller, 0.5)
         self.visible = False
+        self.initBoxCounter()
 
     def boom(self):
 

@@ -2,11 +2,13 @@
 import pyglet
 
 #定义常量
-MARGINLOW = 30
-MARGINHIGH = 30
-MARGINLEFT = 40
-BORDER = 20
-BOARDSIZE = 540
+MARGINLOW = 66
+MARGINHIGH = 66
+MARGINLEFT = 299
+BORDER = 4
+BOARDSIZE = 468
+
+NUMBERSIZE = 100
 
 
 # 0 -> empty, 1 -> box, 2 -> blocked

@@ -61,15 +61,42 @@
     <Folder Include="GameResource\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GameResource\0.png" />
+    <Content Include="GameResource\1.png" />
+    <Content Include="GameResource\16.png" />
+    <Content Include="GameResource\2.png" />
+    <Content Include="GameResource\3.png" />
+    <Content Include="GameResource\32.png" />
+    <Content Include="GameResource\4.png" />
+    <Content Include="GameResource\5.png" />
+    <Content Include="GameResource\6.png" />
+    <Content Include="GameResource\7.png" />
+    <Content Include="GameResource\8.png" />
+    <Content Include="GameResource\9.png" />
     <Content Include="GameResource\Background.jpg" />
+    <Content Include="GameResource\background.png" />
+    <Content Include="GameResource\BackgroundBAK.jpg" />
     <Content Include="GameResource\Box1.png" />
     <Content Include="GameResource\Box2.png" />
     <Content Include="GameResource\Box3.png" />
     <Content Include="GameResource\Box4.png" />
+    <Content Include="GameResource\Box5.png" />
+    <Content Include="GameResource\BOXBAK %281%29.png" />
+    <Content Include="GameResource\BOXBAK %282%29.png" />
+    <Content Include="GameResource\BOXBAK %283%29.png" />
+    <Content Include="GameResource\BOXBAK %284%29.png" />
+    <Content Include="GameResource\exitBoard-400,300.png" />
+    <Content Include="GameResource\exitButton-221,112.png" />
     <Content Include="GameResource\Explosion.png" />
     <Content Include="GameResource\Frame.png" />
+    <Content Include="GameResource\Map1.png" />
+    <Content Include="GameResource\Map2.png" />
     <Content Include="GameResource\Mouse.png" />
+    <Content Include="GameResource\pauseButton-129,112.png" />
+    <Content Include="GameResource\scoreBoard-224,496.png" />
     <Content Include="GameResource\Scoreboard.png" />
+    <Content Include="GameResource\startButton-129,112.png" />
+    <Content Include="GameResource\stepBoard-174,275.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
