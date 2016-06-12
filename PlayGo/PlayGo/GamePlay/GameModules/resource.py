@@ -37,6 +37,11 @@ stepBoard = pyglet.resource.image("stepBoard-174,275.png")
 utils.centerImage(stepBoard)
 exitBoard = pyglet.resource.image("exitBoard-400,300.png")
 utils.centerImage(exitBoard)
+nextLevel = pyglet.resource.image("nextBoard-400,300.png")
+utils.centerImage(nextLevel)
+gameover = pyglet.resource.image("gameover-400,350.png")
+utils.centerImage(gameover)
+
 
 
 #数字

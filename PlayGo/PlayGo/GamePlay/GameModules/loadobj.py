@@ -4,6 +4,7 @@ import pyglet
 import resource, random, gamemap
 from gamebox import Box
 from gamemap import *
+import frame
 import math
 from pyglet.app.base import EventLoop
 
@@ -15,8 +16,7 @@ class Boxgenerate(object):
         self.boxesList = [[] for i in range(9)]
         self.boxIDList = []
         self.allBoxes = []
-        self.boxArray = list(reversed(MAPARRAY1))
-        self.boxCounter = {}
+        self.boxArray = list(reversed(gamemap.MAPARRAY[gamemap.Level-1]))
         self.getKilled = 0
         # Generate box coord
         for i in xrange(9):
@@ -29,8 +29,8 @@ class Boxgenerate(object):
                     self.boxIDList.append(newBox.boxID)
                     self.boxesList[i].append(newBox)
                     self.allBoxes.append(newBox)
-                    #boxCoordList[i].append(boxCoord)
 
+        print self.boxArray
 
     def __getitem__(self, index):
         return self.boxesList[index[0]][index[1]]
@@ -38,32 +38,30 @@ class Boxgenerate(object):
     def __setitem__(self, index, value):
         self.boxesList[index[0]][index[1]] = value
 
-    #def __iter__(self):
-    #    return self.boxesList
-
-    #def __next__(self):
+    def __del__(self):
+        for i in self.allBoxes:
+            i.deleteBox()
 
     def createBox(self,randint, boxID, batch):
         self.boxArray[boxID[0]][boxID[1]] = 1
         return Box(resource.boxList[randint], boxID, batch = batch)
+
     #递归版本
     def threeMoreDeath(self, m, n, i = 1):
-
         if self.boxArray[m][n] == 2:
-            #print "myshit"
             return self.threeMoreDeath(m, n+1, i)
 
         elif n >= 8 or self.boxArray[m][n+1] == 2:
-            #print 'shit', self[m,n].counterX, n, i
             if self[m,n].counterX >= 3:
+                frame.gameScore + self[m,n].counterX
                 self.getKilled = 1
                 for killbox in self.boxesList[m][n-i+1:n+1]:
                     self.delete(killbox)
             return -1
 
         elif id(self[m,n].image) != id(self[m, n+1].image):
-            #print "oh", self[m,n].counterX, n, i
             if self[m,n].counterX >= 3:
+                frame.gameScore + self[m,n].counterX
                 self.getKilled = 1
                 for killbox in self.boxesList[m][n-i+1:n+1]:
                     self.delete(killbox)
@@ -76,20 +74,19 @@ class Boxgenerate(object):
     def threeMoreDeathY(self, m, n, i = 1):
 
         if self.boxArray[m][n] == 2:
-            #print "myshit"
             return self.threeMoreDeathY(m+1, n, i)
 
         elif m >= 8 or self.boxArray[m+1][n] == 2:
-            #print 'shit', self[m,n].counterX, n, i
             if self[m,n].counterY >= 3:
+                frame.gameScore + self[m,n].counterY
                 self.getKilled = 1
                 for killbox in self.boxesList[m-i+1:m+1]:
                     self.delete(killbox[n])
             return -1
 
         elif id(self[m,n].image) != id(self[m+1, n].image):
-            #print "oh", self[m,n].counterX, n, i
             if self[m,n].counterY >= 3:
+                frame.gameScore + self[m,n].counterY
                 self.getKilled = 1
                 for killbox in self.boxesList[m-i+1:m+1]:
                     self.delete(killbox[n])
@@ -99,9 +96,7 @@ class Boxgenerate(object):
             self[m+1,n].counterY += i
             return self.threeMoreDeathY(m+1, n, i+1)
 
-
     def delete(self, boxName):
-        #print "delete1"
         boxName.deleteBox()
         self.boxArray[boxName.boxID[0]][boxName.boxID[1]] = 0
 
@@ -115,6 +110,7 @@ class Boxgenerate(object):
                 dict[w] += 1
             else:
                 dict[w] = 1
+
     #递归版
     def checkEmpty(self, boxID):
         try:
@@ -138,10 +134,7 @@ class Boxgenerate(object):
                 self[newID].visible = True
                 self[newID].scale = 1
                 self.boxArray[newID[0]][newID[1]] = 1
-                #print "Fucking out!"
                 return
-        else:
-            return
 
     def moveAllDown(self):
         for i in self.boxIDList:
@@ -152,7 +145,7 @@ class Boxgenerate(object):
             checker = self.boxArray[boxID[0]+1][boxID[1]]
             if checker == 2:
                 return 2
-            elif (boxID[0]+1, boxID[1]) == OBJIN1:
+            elif (boxID[0]+1, boxID[1]) in gamemap.OBJIN[gamemap.Level - 1]:
                 return 3
             elif checker in (0, 1):
                 return 1
@@ -160,29 +153,15 @@ class Boxgenerate(object):
             return -1
     
     def swapLeftOrRight(self, boxID):
-        if boxID[1] < OBJIN1[1]:
+        if boxID[1] < gamemap.OBJIN[gamemap.Level-1][0][1]:
             #swapRight
             newID = [boxID[0], boxID[1]+1]
             self.swap(boxID, newID)
-            #self.swapEventLoop.sleep(1)
-            #swapObj = swapLoop(boxID, newID)
-            #for i in range(60):
-            #    swapObj.run()
-            #pyglet.clock.schedule_interval(self.swap, 1/120.0, boxID, newID)
-            #self.swapEventLoop.sleep(0.5)
-            #pyglet.clock.unschedule(self.swap)
-
             return newID
         else:
             #swapLeft
             newID = [boxID[0], boxID[1]-1]
             self.swap(boxID, newID)
-            #swapObj = swapLoop(boxID, newID)
-            #for i in range(60):
-            #    swapObj.run()
-            #pyglet.clock.schedule_interval(self.swap, 1/120.0, boxID, newID)
-            #self.swapEventLoop.sleep(0.5)
-            #pyglet.clock.unschedule(self.swap)
             return newID
 
     def swapUpDown(self, boxID):
@@ -338,13 +317,7 @@ boxes = Boxgenerate(batch = boxBatch)
 
     #except(AttributeError):
     #    pass
-
-
-
-
-
-    
-            
+       
     #def checkNeighbor(self, boxID):
     #    crossX = [(0,x) for x in [-1,1]]
     #    crossY = [(y,0) for y in [-1,1]]
@@ -383,9 +356,3 @@ boxes = Boxgenerate(batch = boxBatch)
     #                self[i].delete()
     #    except(IndexError, AttributeError):
     #        pass
-
-
-
-
-#def initNeighbor():
-#    for i in
